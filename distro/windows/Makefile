@@ -119,7 +119,7 @@ endif
 endif
 	cp $(MINGW_PREFIX)/$(TARGET)/bin/libgcc_s_*-1.dll $(OT_PREFIX)/bin
 	cp $(MINGW_PREFIX)/$(TARGET)/bin/libquadmath-0.dll $(OT_PREFIX)/bin
-	cp $(MINGW_PREFIX)/$(TARGET)/bin/libgfortran-3.dll $(OT_PREFIX)/bin
+	cp $(MINGW_PREFIX)/$(TARGET)/bin/libgfortran-*.dll $(OT_PREFIX)/bin
 	cp $(MINGW_PREFIX)/$(TARGET)/bin/libstdc++-6.dll $(OT_PREFIX)/bin
 	cp $(MINGW_PREFIX)/$(TARGET)/bin/libwinpthread-1.dll $(OT_PREFIX)/bin
 	cp $(MINGW_PREFIX)/$(TARGET)/bin/libblas.dll $(OT_PREFIX)/bin
