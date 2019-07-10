@@ -38,4 +38,3 @@ Data analysis
     linear_regression.ipynb
     quantile_estimation_wilks.ipynb
 
-
