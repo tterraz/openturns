@@ -1,39 +1,13 @@
-version: 2
-
-jobs:
-  build_linux:
-    docker:
-      - image: openturns/archlinux-python
-        environment:
-          MAKEFLAGS: "-j2"
-    steps:
-      - checkout
-      - run:
-          name: Install
-          command: |
-            cd /tmp && git clone --depth 1 https://github.com/swig/swig.git && cd swig && ./autogen.sh && ./configure --without-alllang && make && sudo make install
-            sudo pip install git+https://github.com/sphinx-doc/sphinx.git
-      - run:
-          name: Build and test
-          command: ./.circleci/run_docker_linux.sh
-      - run:
-          name: Publish documentation
-          command: ./.circleci/upload_github_io.sh
-
-  build_mingw:
-    docker:
-      - image: openturns/archlinux-mingw
-        environment:
-          MAKEFLAGS: "-j2"
-    steps:
-      - checkout
-      - run:
-          name: Build and test
-          command: ./.circleci/run_docker_mingw.sh
-
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+# Use a package of configuration called an orb.
+orbs:
+  # Declare a dependency on the welcome-orb
+  welcome: circleci/welcome-orb@0.4.1
+# Orchestrate or schedule a set of jobs
 workflows:
-  version: 2
-  build_and_test:
+  # Name the workflow "welcome"
+  welcome:
+    # Run the welcome/run job in its own container
     jobs:
-      - build_linux
-      - build_mingw
+      - welcome/run
